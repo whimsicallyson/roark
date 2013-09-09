@@ -1,6 +1,9 @@
 from straightBeamCalc import *
 from elasticFdnCalc import *
 from annularPlateCalc import *
+from revolveShellCalc import *
+from crackStressCalc import *
+
 
 def straightBeamChoices(number):
 
@@ -261,3 +264,51 @@ def annularPlateChoices(number):
 
     return choice[number]()
               
+def revolveShellChoices(number):
+
+    choice = {"11": revolveShell1A,
+              "12": revolveShell1B,
+              "13": revolveShell1C,
+              "14": revolveShell1D,
+              "15": revolveShell1E,
+              "16": revolveShell1F,
+              "21": revolveShell2A,
+              "22": revolveShell2B,
+              "23": revolveShell2C,
+              "24": revolveShell2D,
+              "25": revolveShell2E,
+              "26": revolveShell2F,
+              "31": revolveShell3A,
+              "32": revolveShell3B,
+              "33": revolveShell3C,
+              "34": revolveShell3D,
+              "35": revolveShell3E,
+              "36": revolveShell3F,
+              "41": revolveShell4A,
+              "42": revolveShell4B,
+              "43": revolveShell4C,
+              "44": revolveShell4D,
+              "45": revolveShell4E,
+              "46": revolveShell4F,
+              "51": revolveShell5A}
+
+    return choice[number]()
+              
+def crackStressChoices(number):
+
+    choice = {"11": crackStress1A,
+              "12": crackStress1B,
+              "13": crackStress1C,
+              "21": crackStress2A,
+              "22": crackStress2B,
+              "23": crackStress2C,
+              "31": crackStress3A,
+              "32": crackStress3B,
+              "33": crackStress3C,
+              "41": crackStress4A,
+              "42": crackStress4B,
+              "43": crackStress4C,}
+
+    return choice[number]()
+
+

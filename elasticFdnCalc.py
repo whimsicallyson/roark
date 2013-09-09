@@ -2,8 +2,8 @@
 #Shear, Moment, Slope, and Deflection Formulas for Finite-Length Beams on Elastic Foundations
 #Table from Roark's Formulas for Stress and Strain, Eighth Edition
 
-from datetime import datetime
 from math import cos, sin, cosh, sinh
+from io import prompt, fileWriter
 
 def beta_(width,fdnMod,modOfElas,momOfInert):
     return ((width*fdnMod)/(4.0*modOfElas*momOfInert))**.25
@@ -37,392 +37,75 @@ def c_14(beta,l):
     return sinh(beta*l)**2+sin(beta*l)**2
 
 
+def promptFileAll():
+
+    length = prompt("Length of Beam (in): ")
+    modOfElas = prompt("Modulus of Elasticity of Material (lb/in2): ")
+    momOfInert = prompt("Area Moment of Inertia of Section (in4): ")
+    fdnMod = prompt("Foundation Modulus (lb/in2/in): ")
+    width = prompt("Beam Width (in): ")
+
+    return (length, modOfElas, momOfInert, fdnMod, width)
+
 def promptFile1():
     #User Input Section for Intermediate Load
 
-    load = None
-    while load is None:
-        try:
-            load = float(raw_input("Concentrated Load (lb): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-          
-    length = None
-    while length is None:
-        try:
-            length = float(raw_input("Length of Beam (in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    distance = None
-    while distance is None:
-        try:
-            distance = float(raw_input("Distance from left end to concentrated load (in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    modOfElas = None
-    while modOfElas is None:
-        try:
-            modOfElas = float(raw_input("Modulus of Elasticity of Material (lb/in2): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    momOfInert = None
-    while momOfInert is None:
-        try:
-            momOfInert = float(raw_input("Area Moment of Inertia of Section (in4): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    fdnMod = None
-    while fdnMod is None:
-        try:
-            fdnMod = float(raw_input("Foundation Modulus (lb/in2/in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    width = None
-    while width is None:
-        try:
-            width = float(raw_input("Beam Width (in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
+    load = prompt("Concentrated Load (lb): ")
+    distance = prompt("Distance from left end to concentrated load (in): ")
+    length, modOfElas, momOfInert, fdnMod, width = promptFileAll()
+    
     return (load, length, distance, modOfElas, momOfInert, fdnMod, width)
 
 def promptFile2():
     #User Input Section for Uniformly Distributed Load
 
-    load = None
-    while load is None:
-        try:
-            load = float(raw_input("Unit Load (lb/in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-          
-    length = None
-    while length is None:
-        try:
-            length = float(raw_input("Length of Beam (in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    distance = None
-    while distance is None:
-        try:
-            distance = float(raw_input("Distance from left end to left edge of distributed load (in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    modOfElas = None
-    while modOfElas is None:
-        try:
-            modOfElas = float(raw_input("Modulus of Elasticity of Material (lb/in2): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    momOfInert = None
-    while momOfInert is None:
-        try:
-            momOfInert = float(raw_input("Area Moment of Inertia of Section (in4): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    fdnMod = None
-    while fdnMod is None:
-        try:
-            fdnMod = float(raw_input("Foundation Modulus (lb/in2/in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    width = None
-    while width is None:
-        try:
-            width = float(raw_input("Beam Width (in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
+    load = prompt("Unit Load (lb/in): ")
+    distance = prompt("Distance from left end to left edge of distributed load (in): ")
+    length, modOfElas, momOfInert, fdnMod, width = promptFileAll()
+    
     return (load, length, distance, modOfElas, momOfInert, fdnMod, width)
 
 def promptFile3():
     #User Input section for uniformly increasing load
     
-    load = None
-    while load is None:
-        try:
-            load = float(raw_input("Unit Load (lb/in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-          
-    length = None
-    while length is None:
-        try:
-            length = float(raw_input("Length of Beam (in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    distance = None
-    while distance is None:
-        try:
-            distance = float(raw_input("Distance from left end to left edge of distributed load (in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    modOfElas = None
-    while modOfElas is None:
-        try:
-            modOfElas = float(raw_input("Modulus of Elasticity of Material (lb/in2): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    momOfInert = None
-    while momOfInert is None:
-        try:
-            momOfInert = float(raw_input("Area Moment of Inertia of Section (in4): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    fdnMod = None
-    while fdnMod is None:
-        try:
-            fdnMod = float(raw_input("Foundation Modulus (lb/in2/in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    width = None
-    while width is None:
-        try:
-            width = float(raw_input("Beam Width (in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
+    load = prompt("Unit Load (lb/in): ")
+    distance = prompt("Distance from left end to left edge of distributed load (in): ")
+    length, modOfElas, momOfInert, fdnMod, width = promptFileAll()
+    
     return (load, length, distance, modOfElas, momOfInert, fdnMod, width)
 
 def promptFile4():
     #user input section for concentrated intermediate moment
-    moment = None
-    while moment is None:
-        try:
-            moment = float(raw_input("Applied Moment (in-lb): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-          
-    length = None
-    while length is None:
-        try:
-            length = float(raw_input("Length of Beam (in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    distance = None
-    while distance is None:
-        try:
-            distance = float(raw_input("Distance from left end to applied moment (in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    modOfElas = None
-    while modOfElas is None:
-        try:
-            modOfElas = float(raw_input("Modulus of Elasticity of Material (lb/in2): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    momOfInert = None
-    while momOfInert is None:
-        try:
-            momOfInert = float(raw_input("Area Moment of Inertia of Section (in4): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    fdnMod = None
-    while fdnMod is None:
-        try:
-            fdnMod = float(raw_input("Foundation Modulus (lb/in2/in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    width = None
-    while width is None:
-        try:
-            width = float(raw_input("Beam Width (in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
+    moment = prompt("Applied Moment (in-lb): ")         
+    distance = prompt("Distance from left end to applied moment (in): ")
+    length, modOfElas, momOfInert, fdnMod, width = promptFileAll()
+    
     return (moment, length, distance, modOfElas, momOfInert, fdnMod, width)
 
 def promptFile5():
     #user input section for angular displacement
 
-    angle = None
-    while angle is None:
-        try:
-            angle = float(raw_input("Angular Displacement (rad): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-          
-    length = None
-    while length is None:
-        try:
-            length = float(raw_input("Length of Beam (in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    distance = None
-    while distance is None:
-        try:
-            distance = float(raw_input("Distance from left end to angular displacement (in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    modOfElas = None
-    while modOfElas is None:
-        try:
-            modOfElas = float(raw_input("Modulus of Elasticity of Material (lb/in2): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    momOfInert = None
-    while momOfInert is None:
-        try:
-            momOfInert = float(raw_input("Area Moment of Inertia of Section (in4): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    fdnMod = None
-    while fdnMod is None:
-        try:
-            fdnMod = float(raw_input("Foundation Modulus (lb/in2/in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    width = None
-    while width is None:
-        try:
-            width = float(raw_input("Beam Width (in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
+    angle = prompt("Angular Displacement (rad): ")
+    distance = prompt("Distance from left end to angular displacement (in): ")
+    length, modOfElas, momOfInert, fdnMod, width = promptFileAll()
+    
     return (angle, length, distance, modOfElas, momOfInert, fdnMod, width)
 
 def promptFile6():
     #user input section for lateral displacement
-    delta = None
-    while delta is None:
-        try:
-            delta = float(raw_input("Lateral Displacement (in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-          
-    length = None
-    while length is None:
-        try:
-            length = float(raw_input("Length of Beam (in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    distance = None
-    while distance is None:
-        try:
-            distance = float(raw_input("Distance from left end to lateral displacement (in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    modOfElas = None
-    while modOfElas is None:
-        try:
-            modOfElas = float(raw_input("Modulus of Elasticity of Material (lb/in2): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    momOfInert = None
-    while momOfInert is None:
-        try:
-            momOfInert = float(raw_input("Area Moment of Inertia of Section (in4): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    fdnMod = None
-    while fdnMod is None:
-        try:
-            fdnMod = float(raw_input("Foundation Modulus (lb/in2/in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    width = None
-    while width is None:
-        try:
-            width = float(raw_input("Beam Width (in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
+    delta = prompt("Lateral Displacement (in): ")
+    distance = prompt("Distance from left end to lateral displacement (in): ")
+    length, modOfElas, momOfInert, fdnMod, width = promptFileAll()
+    
     return (delta, length, distance, modOfElas, momOfInert, fdnMod, width)
 
 def promptFile7():
     #user input section for temperature variation
-    t1 = None
-    while t1 is None:
-        try:
-            t1 = float(raw_input("Temperature on Top Face (degF): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    t2 = None
-    while t2 is None:
-        try:
-            t2 = float(raw_input("Temperature on Bottom Face (degF): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-            
-    gamma = None
-    while gamma is None:
-        try:
-            gamma = float(raw_input("Temperature Coefficient of Expansion (in/in/degF): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-            
-    length = None
-    while length is None:
-        try:
-            length = float(raw_input("Length of Beam (in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    modOfElas = None
-    while modOfElas is None:
-        try:
-            modOfElas = float(raw_input("Modulus of Elasticity of Material (lb/in2): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    momOfInert = None
-    while momOfInert is None:
-        try:
-            momOfInert = float(raw_input("Area Moment of Inertia of Section (in4): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    fdnMod = None
-    while fdnMod is None:
-        try:
-            fdnMod = float(raw_input("Foundation Modulus (lb/in2/in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    width = None
-    while width is None:
-        try:
-            width = float(raw_input("Beam Width (in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    depth = None
-    while depth is None:
-        try:
-            depth = float(raw_input("Beam Depth (in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
+    t1 = prompt("Temperature on Top Face (degF): ")
+    t2 = prompt("Temperature on Bottom Face (degF): ")
+    gamma = prompt("Temperature Coefficient of Expansion (in/in/degF): ")
+    length, modOfElas, momOfInert, fdnMod, width = promptFileAll()
+    depth = prompt("Beam Depth (in): ")
 
     return (t1, t2, gamma, length, modOfElas, momOfInert, fdnMod, width, depth)
 
@@ -2797,207 +2480,136 @@ def elasticFdn7P():
 
 def writeFile1(load, length, distance, modOfElas, momOfInert, fdnMod, width, r, m, theta, y):
     #Creates and writes the output file for Intermediate Load calculations
-    fileName = raw_input("Output File Name: ") + ".txt"
-    output = open(fileName, 'w')
-    project = raw_input("Project Number: ")
-    output.write("""
-    Roark Equations for Stress and Strain
-    Finite-Length Beam on Elastic Foundations
-    Concentrated Intermediate Load
 
-    Program Release 20130116
-    """)
-    output.write("\n    Project Number    %s\n" %(project))
-    output.write("    Calculated %s\n" %(str(datetime.now())[:19]))
-    output.write("\n\nINPUT DATA\n\n")
-    output.write("Concentrated Load:                                                %.2f lb\n" %load)
-    output.write("Length of Beam:                                                   %.2f in\n" %length)
-    output.write("Width of Beam:                                                    %.2f in\n" %width)
-    output.write("Distance from Left End of Beam to Concentrated Load Location:     %.2f in\n" %distance)
-    output.write("Modulus of Elasticity of Material:                                %.2f lb/in2\n" %modOfElas)
-    output.write("Area Moment of Inertia of Section:                                %.2f in4\n" %momOfInert)
-    output.write("Foundation Modulus:                                               %.2f lb/in2/in\n" %fdnMod)
-    output.write("\n\nOUTPUT DATA\n\n")
-    output.write("Vertical End Reaction at Left End:                                %.2f lb\n" %r)
-    output.write("Reaction End Moment at Left End:                                  %.2f in-lb\n" %m)
-    output.write("Slope of Beam at Left End:                                        %.2f rad\n" %theta)
-    output.write("Deflection of Beam at Left End:                                   %.2f in\n" %y)
-    output.close()
+    inputLabels = ["Concentrated Load:                                                ", "Length of Beam:                                                   ",
+                   "Width of Beam:                                                    ", "Distance from Left End of Beam to Concentrated Load Location:     ",
+                   "Modulus of Elasticity of Material:                                ", "Area Moment of Inertia of Section:                                ",
+                   "Foundation Modulus:                                               "]
+    inputValues = [round(load,2), round(length,2), round(width,2), round(distance,2), round(modOfElas,2), round(momOfInert,2), round(fdnMod,2)]
+    inputDims = ['  lb', '  in', '  in', '  in', '  lb/in2', '  in4', '  lb/in2/in']
+
+    outputLabels = ["Vertical End Reaction at Left End:                                ", "Reaction End Moment at Left End:                                  ",
+                    "Slope of Beam at Left End:                                        ", "Deflection of Beam at Left End:                                   "]
+    outputValues = [round(r,2), round(m,2), round(theta,2), round(y,2)]
+    outputDims = ['  lb', '  in-lb', '  rad', '  in']
+
+
+    return fileWriter("Finite-Length Beam on Elastic Foundations", "Concentrated Intermediate Load",inputLabels, inputValues, inputDims, outputLabels, outputValues, outputDims)    
+
+
 
 def writeFile2(load, length, distance, modOfElas, momOfInert, fdnMod, width, r, m, theta, y):
     #Creates and writes the output file for Uniformly Distributed Load calculations
-    fileName = raw_input("Output File Name: ") + ".txt"
-    output = open(fileName, 'w')
-    project = raw_input("Project Number: ")
-    output.write("""
-    Roark Equations for Stress and Strain
-    Finite-Length Beam on Elastic Foundations
-    Partial Uniformly Distributed Load
 
-    Program Release 20130116
-    """)
-    output.write("\n    Project Number    %s\n" %(project))
-    output.write("    Calculated %s\n" %(str(datetime.now())[:19]))
-    output.write("\n\nINPUT DATA\n\n")
-    output.write("Unit Load:                                                    %.2f lb\n" %load)
-    output.write("Length of Beam:                                               %.2f in\n" %length)
-    output.write("Width of Beam:                                                %.2f in\n" %width)
-    output.write("Distance from Left End of Beam to Edge of Distributed Load:   %.2f in\n" %distance)
-    output.write("Modulus of Elasticity of Material:                            %.2f lb/in2\n" %modOfElas)
-    output.write("Area Moment of Inertia of Section:                            %.2f in4\n" %momOfInert)
-    output.write("Foundation Modulus:                                           %.2f lb/in2/in\n" %fdnMod)
-    output.write("\n\nOUTPUT DATA\n\n")
-    output.write("Vertical End Reaction at Left End:                            %.2f lb\n" %r)
-    output.write("Reaction End Moment at Left End:                              %.2f in-lb\n" %m)
-    output.write("Slope of Beam at Left End:                                    %.2f rad\n" %theta)
-    output.write("Deflection of Beam at Left End:                               %.2f in\n" %y)
-    output.close()
+    inputLabels = ["Unit Load:                                                        ", "Length of Beam:                                                   ",
+                   "Width of Beam:                                                    ", "Distance from Left End of Beam to Edge of Distributed Load:       ",
+                   "Modulus of Elasticity of Material:                                ", "Area Moment of Inertia of Section:                                ",
+                   "Foundation Modulus:                                               "]
+    inputValues = [round(load,2), round(length,2), round(width,2), round(distance,2), round(modOfElas,2), round(momOfInert,2), round(fdnMod,2)]
+    inputDims = ['  lb/in', '  in', '  in', '  in', '  lb/in2', '  in4', '  lb/in2/in']
+
+    outputLabels = ["Vertical End Reaction at Left End:                                ", "Reaction End Moment at Left End:                                  ",
+                    "Slope of Beam at Left End:                                        ", "Deflection of Beam at Left End:                                   "]
+    outputValues = [round(r,2), round(m,2), round(theta,2), round(y,2)]
+    outputDims = ['  lb', '  in-lb', '  rad', '  in']
+
+
+    return fileWriter("Finite-Length Beam on Elastic Foundations", "Partial Uniformly Distributed Load",inputLabels, inputValues, inputDims, outputLabels, outputValues, outputDims)    
+
 
 def writeFile3(load, length, distance, modOfElas, momOfInert, fdnMod, width, r, m, theta, y):
     #Creates and writes the output file for Uniformly Increasing Load calculations
-    fileName = raw_input("Output File Name: ") + ".txt"
-    output = open(fileName, 'w')
-    project = raw_input("Project Number: ")
-    output.write("""
-    Roark Equations for Stress and Strain
-    Finite-Length Beam on Elastic Foundations
-    Partial Uniformly Increasing Load
 
-    Program Release 20130116
-    """)
-    output.write("\n    Project Number    %s\n" %(project))
-    output.write("    Calculated %s\n" %(str(datetime.now())[:19]))
-    output.write("\n\nINPUT DATA\n\n")
-    output.write("Maximum Load:                                                 %.2f in-lb\n" %load)
-    output.write("Length of Beam:                                               %.2f in\n" %length)
-    output.write("Width of Beam:                                                %.2f in\n" %width)
-    output.write("Distance from Left End of Beam to Edge of Distributed Load:   %.2f in\n" %distance)
-    output.write("Modulus of Elasticity of Material:                            %.2f lb/in2\n" %modOfElas)
-    output.write("Area Moment of Inertia of Section:                            %.2f in4\n" %momOfInert)
-    output.write("Foundation Modulus:                                           %.2f lb/in2/in\n" %fdnMod)
-    output.write("\n\nOUTPUT DATA\n\n")
-    output.write("Vertical End Reaction at Left End:                            %.2f lb\n" %r)
-    output.write("Reaction End Moment at Left End:                              %.2f in-lb\n" %m)
-    output.write("Slope of Beam at Left End:                                    %.2f rad\n" %theta)
-    output.write("Deflection of Beam at Left End:                               %.2f in\n" %y)
-    output.close()
+    inputLabels = ["Maximum Load:                                                     ", "Length of Beam:                                                   ",
+                   "Width of Beam:                                                    ", "Distance from Left End of Beam to Edge of Distributed Load:       ",
+                   "Modulus of Elasticity of Material:                                ", "Area Moment of Inertia of Section:                                ",
+                   "Foundation Modulus:                                               "]
+    inputValues = [round(load,2), round(length,2), round(width,2), round(distance,2), round(modOfElas,2), round(momOfInert,2), round(fdnMod,2)]
+    inputDims = ['  lb/in', '  in', '  in', '  in', '  lb/in2', '  in4', '  lb/in2/in']
+
+    outputLabels = ["Vertical End Reaction at Left End:                                ", "Reaction End Moment at Left End:                                  ",
+                    "Slope of Beam at Left End:                                        ", "Deflection of Beam at Left End:                                   "]
+    outputValues = [round(r,2), round(m,2), round(theta,2), round(y,2)]
+    outputDims = ['  lb', '  in-lb', '  rad', '  in']
+
+
+    return fileWriter("Finite-Length Beam on Elastic Foundations", "Partial Uniformly Increasing Load",inputLabels, inputValues, inputDims, outputLabels, outputValues, outputDims)    
+   
 
 def writeFile4(moment, length, distance, modOfElas, momOfInert, fdnMod, width, r, m, theta, y):
     #Creates and writes the output file for Concentrated Moment calculations
-    fileName = raw_input("Output File Name: ") + ".txt"
-    output = open(fileName, 'w')
-    project = raw_input("Project Number: ")
-    output.write("""
-    Roark Equations for Stress and Strain
-    Finite-Length Beam on Elastic Foundations
-    Concentrated Intermediate Moment
 
-    Program Release 20130116
-    """)
-    output.write("\n    Project Number    %s\n" %(project))
-    output.write("    Calculated %s\n" %(str(datetime.now())[:19]))
-    output.write("\n\nINPUT DATA\n\n")
-    output.write("Concentrated Moment:                                              %.2f deg\n" %moment)
-    output.write("Length of Beam:                                                   %.2f in\n" %length)
-    output.write("Width of Beam:                                                    %.2f in\n" %width)
-    output.write("Distance from Left End of Beam to Angular Deformation Location:   %.2f in\n" %distance)
-    output.write("Modulus of Elasticity of Material:                                %.2f lb/in2\n" %modOfElas)
-    output.write("Area Moment of Inertia of Section:                                %.2f in4\n" %momOfInert)
-    output.write("Foundation Modulus:                                               %.2f lb/in2/in\n" %fdnMod)
-    output.write("\n\nOUTPUT DATA\n\n")
-    output.write("Vertical End Reaction at Left End:                                %.2f lb\n" %r)
-    output.write("Reaction End Moment at Left End:                                  %.2f in-lb\n" %m)
-    output.write("Slope of Beam at Left End:                                        %.2f rad\n" %theta)
-    output.write("Deflection of Beam at Left End:                                   %.2f in\n" %y)
-    output.close()
+    inputLabels = ["Concentrated Moment:                                              ", "Length of Beam:                                                   ",
+                   "Width of Beam:                                                    ", "Distance from Left End of Beam to Moment Location:                ",
+                   "Modulus of Elasticity of Material:                                ", "Area Moment of Inertia of Section:                                ",
+                   "Foundation Modulus:                                               "]
+    inputValues = [round(moment,2), round(length,2), round(width,2), round(distance,2), round(modOfElas,2), round(momOfInert,2), round(fdnMod,2)]
+    inputDims = ['  in-lb', '  in', '  in', '  in', '  lb/in2', '  in4', '  lb/in2/in']
+
+    outputLabels = ["Vertical End Reaction at Left End:                                ", "Reaction End Moment at Left End:                                  ",
+                    "Slope of Beam at Left End:                                        ", "Deflection of Beam at Left End:                                   "]
+    outputValues = [round(r,2), round(m,2), round(theta,2), round(y,2)]
+    outputDims = ['  lb', '  in-lb', '  rad', '  in']
+
+
+    return fileWriter("Finite-Length Beam on Elastic Foundations", "Concentrated Intermediate Moment",inputLabels, inputValues, inputDims, outputLabels, outputValues, outputDims)    
+
 
 def writeFile5(angle, length, distance, modOfElas, momOfInert, fdnMod, width, r, m, theta, y):
     #Creates and writes the output file for Angular Displacement calculations
-    fileName = raw_input("Output File Name: ") + ".txt"
-    output = open(fileName, 'w')
-    project = raw_input("Project Number: ")
-    output.write("""
-    Roark Equations for Stress and Strain
-    Finite-Length Beam on Elastic Foundations
-    Intermediate External Angular Displacement
 
-    Program Release 20130116
-    """)
-    output.write("\n    Project Number    %s\n" %(project))
-    output.write("    Calculated %s\n" %(str(datetime.now())[:19]))
-    output.write("\n\nINPUT DATA\n\n")
-    output.write("Angular Displacement:                                             %.2f in\n" %angle)
-    output.write("Length of Beam:                                                   %.2f in\n" %length)
-    output.write("Width of Beam:                                                    %.2f in\n" %width)
-    output.write("Distance from Left End of Beam to Lateral Displacement Location:  %.2f in\n" %distance)
-    output.write("Modulus of Elasticity of Material:                                %.2f lb/in2\n" %modOfElas)
-    output.write("Area Moment of Inertia of Section:                                %.2f in4\n" %momOfInert)
-    output.write("Foundation Modulus:                                               %.2f lb/in2/in\n" %fdnMod)
-    output.write("\n\nOUTPUT DATA\n\n")
-    output.write("Vertical End Reaction at Left End:                                %.2f lb\n" %r)
-    output.write("Reaction End Moment at Left End:                                  %.2f in-lb\n" %m)
-    output.write("Slope of Beam at Left End:                                        %.2f rad\n" %theta)
-    output.write("Deflection of Beam at Left End:                                   %.2f in\n" %y)
-    output.close()
+    inputLabels = ["Angular Displacement:                                             ", "Length of Beam:                                                   ",
+                   "Width of Beam:                                                    ", "Distance from Left End of Beam to Angular Displacement Location:  ",
+                   "Modulus of Elasticity of Material:                                ", "Area Moment of Inertia of Section:                                ",
+                   "Foundation Modulus:                                               "]
+    inputValues = [round(angle,2), round(length,2), round(width,2), round(distance,2), round(modOfElas,2), round(momOfInert,2), round(fdnMod,2)]
+    inputDims = ['  rad', '  in', '  in', '  in', '  lb/in2', '  in4', '  lb/in2/in']
+
+    outputLabels = ["Vertical End Reaction at Left End:                                ", "Reaction End Moment at Left End:                                  ",
+                    "Slope of Beam at Left End:                                        ", "Deflection of Beam at Left End:                                   "]
+    outputValues = [round(r,2), round(m,2), round(theta,2), round(y,2)]
+    outputDims = ['  lb', '  in-lb', '  rad', '  in']
+
+
+    return fileWriter("Finite-Length Beam on Elastic Foundations", "Intermediate External Angular Displacement",inputLabels, inputValues, inputDims, outputLabels, outputValues, outputDims)    
+
 
 def writeFile6(delta, length, distance, modOfElas, momOfInert, fdnMod, width, r, m, theta, y):
     #Creates and writes the output file for Lateral Displacement calculations
-    fileName = raw_input("Output File Name: ") + ".txt"
-    output = open(fileName, 'w')
-    project = raw_input("Project Number: ")
-    output.write("""
-    Roark Equations for Stress and Strain
-    Finite-Length Beam on Elastic Foundations
-    Intermediate External Lateral Displacement
 
-    Program Release 20130116
-    """)
-    output.write("\n    Project Number    %s\n" %(project))
-    output.write("    Calculated %s\n" %(str(datetime.now())[:19]))
-    output.write("\n\nINPUT DATA\n\n")
-    output.write("Lateral Displacement:                                             %.2f in\n" %delta)
-    output.write("Length of Beam:                                                   %.2f in\n" %length)
-    output.write("Width of Beam:                                                    %.2f in\n" %width)
-    output.write("Distance from Left End of Beam to Lateral Displacement Location:  %.2f in\n" %distance)
-    output.write("Modulus of Elasticity of Material:                                %.2f lb/in2\n" %modOfElas)
-    output.write("Area Moment of Inertia of Section:                                %.2f in4\n" %momOfInert)
-    output.write("Foundation Modulus:                                               %.2f lb/in2/in\n" %fdnMod)
-    output.write("\n\nOUTPUT DATA\n\n")
-    output.write("Vertical End Reaction at Left End:                                %.2f lb\n" %r)
-    output.write("Reaction End Moment at Left End:                                  %.2f in-lb\n" %m)
-    output.write("Slope of Beam at Left End:                                        %.2f rad\n" %theta)
-    output.write("Deflection of Beam at Left End:                                   %.2f in\n" %y)
-    output.close()
+    inputLabels = ["Lateral Displacement:                                             ", "Length of Beam:                                                   ",
+                   "Width of Beam:                                                    ", "Distance from Left End of Beam to Lateral Displacement Location:  ",
+                   "Modulus of Elasticity of Material:                                ", "Area Moment of Inertia of Section:                                ",
+                   "Foundation Modulus:                                               "]
+    inputValues = [round(delta,2), round(length,2), round(width,2), round(distance,2), round(modOfElas,2), round(momOfInert,2), round(fdnMod,2)]
+    inputDims = ['  in', '  in', '  in', '  in', '  lb/in2', '  in4', '  lb/in2/in']
+
+    outputLabels = ["Vertical End Reaction at Left End:                                ", "Reaction End Moment at Left End:                                  ",
+                    "Slope of Beam at Left End:                                        ", "Deflection of Beam at Left End:                                   "]
+    outputValues = [round(r,2), round(m,2), round(theta,2), round(y,2)]
+    outputDims = ['  lb', '  in-lb', '  rad', '  in']
+
+
+    return fileWriter("Finite-Length Beam on Elastic Foundations", "Intermediate External Lateral Displacement",inputLabels, inputValues, inputDims, outputLabels, outputValues, outputDims)    
+
 
 def writeFile7(t1, t2, gamma, length, depth, distance, modOfElas, momOfInert, fdnMod, width, r, m, theta, y):
     #Creates and writes the output file for Temperature Variation calculations
-    fileName = raw_input("Output File Name: ") + ".txt"
-    output = open(fileName, 'w')
-    project = raw_input("Project Number: ")
-    output.write("""
-    Roark Equations for Stress and Strain
-    Finite-Length Beam on Elastic Foundations
-    Uniform Temperature Variation Along Beam
 
-    Program Release 20130116
-    """)
-    output.write("\n    Project Number    %s\n" %(project))
-    output.write("    Calculated %s\n" %(str(datetime.now())[:19]))
-    output.write("\n\nINPUT DATA\n\n")
-    output.write("Temperature at Top of Beam:                           %.2f degF\n" %t1)
-    output.write("Temperature at Bottom of Beam:                        %.2f degF\n" %t2)
-    output.write("Temperature Coefficient of Expansion:                 %.2f in/in/degF\n" %gamma)
-    output.write("Length of Beam:                                       %.2f in\n" %length)
-    output.write("Width of Beam:                                        %.2f in\n" %width)
-    output.write("Depth of Beam:                                        %.2f in\n" %depth)
-    output.write("Distance from Left End of Beam to Point of Interest:  %.2f in\n" %distance)
-    output.write("Modulus of Elasticity of Material:                    %.2f lb/in2\n" %modOfElas)
-    output.write("Area Moment of Inertia of Section:                    %.2f in4\n" %momOfInert)
-    output.write("Foundation Modulus:                                   %.2f lb/in2/in\n" %fdnMod)
-    output.write("\n\nOUTPUT DATA\n\n")
-    output.write("Vertical End Reaction at Left End:                    %.2f lb\n" %r)
-    output.write("Reaction End Moment at Left End:                      %.2f in-lb\n" %m)
-    output.write("Slope of Beam at Left End:                            %.2f rad\n" %theta)
-    output.write("Deflection of Beam at Left End:                       %.2f in\n" %y)
-    output.close()
+    inputLabels = ["Temperature at Top of Beam:                                       ", "Temperature at Bottom of Beam:                                    ",
+                   "Temperature Coefficient of Expansion:                             ", "Length of Beam:                                                   ",
+                   "Width of Beam:                                                    ", "Depth of Beam:                                                    ",
+                   "Distance from Left End of Beam to Lateral Displacement Location:  ", "Modulus of Elasticity of Material:                                ",
+                   "Area Moment of Inertia of Section:                                ", "Foundation Modulus:                                               "]
+    inputValues = [round(t1,2), round(t2,2), round(gamma,2), round(length,2), round(width,2), round(depth,2), round(distance,2), round(modOfElas,2), round(momOfInert,2), round(fdnMod,2)]
+    inputDims = ['  degF', '  degF', '  in/in/degF', '  in', '  in', '  in', '  in', '  lb/in2', '  in4', '  lb/in2/in']
+
+    outputLabels = ["Vertical End Reaction at Left End:                                ", "Reaction End Moment at Left End:                                  ",
+                    "Slope of Beam at Left End:                                        ", "Deflection of Beam at Left End:                                   "]
+    outputValues = [round(r,2), round(m,2), round(theta,2), round(y,2)]
+    outputDims = ['  lb', '  in-lb', '  rad', '  in']
+
+
+    return fileWriter("Finite-Length Beam on Elastic Foundations", "Uniform Temperature Variation Along Beam",inputLabels, inputValues, inputDims, outputLabels, outputValues, outputDims)    
+
 

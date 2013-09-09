@@ -1,111 +1,32 @@
 from  annularPlateEqs import *
-from datetime import datetime
+from io import prompt, fileWriter
+
+def promptFileAll():
+
+    radOut = prompt("Outer Radius of Plate (in): ") #a
+    radIn = prompt("Inner Radius of Plate (in): ") #b
+    poisson = prompt("Poisson's Ratio of Material: ") #v
+    modOfElas = prompt("Modulus of Elasticity of Material (lb/in2): ") #E
+    thick = prompt("Thickness of Plate (in): ") #t
+
+    return (radOut, radIn, poisson, modOfElas, thick)
+    
 
 def promptFile1():
     #User Input Section for Intermediate Load
 
-    load = None #w
-    while load is None:
-        try:
-            load = float(raw_input("Annular Line Load (lb/in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-          
-    length = None #r
-    while length is None:
-        try:
-            length = float(raw_input("Location of Unit Line Load from Plate Center(in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    radOut = None #a
-    while radOut is None:
-        try:
-            radOut = float(raw_input("Outer Radius of Plate (in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    radIn = None #b
-    while radIn is None:
-        try:
-            radIn = float(raw_input("Inner Radius of Plate (in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    poisson = None #v
-    while poisson is None:
-        try:
-            poisson = float(raw_input("Poisson's Ratio of Material: "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    modOfElas = None #E
-    while modOfElas is None:
-        try:
-            modOfElas = float(raw_input("Modulus of Elasticity of Material (lb/in2): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    thick = None #t
-    while thick is None:
-        try:
-            thick = float(raw_input("Thickness of Plate (in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
+    load = prompt("Annular Line Load (lb/in): ") #w
+    length = prompt("Location of Unit Line Load from Plate Center(in): ") #r
+    radOut, radIn, poisson, modOfElas, thick = promptFileAll()
 
     return (load, length, radOut, radIn, poisson, modOfElas, thick)
 
 def promptFile2():
     #User Input Section for Uniformly Distributed Pressure
 
-    load = None #q
-    while load is None:
-        try:
-            load = float(raw_input("Uniformly Distributed Pressure (lb/in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-          
-    length = None #r
-    while length is None:
-        try:
-            length = float(raw_input("Location of Start of Pressure Distribution from Plate Center(in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    radOut = None #a
-    while radOut is None:
-        try:
-            radOut = float(raw_input("Outer Radius of Plate (in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    radIn = None #b
-    while radIn is None:
-        try:
-            radIn = float(raw_input("Inner Radius of Plate (in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    poisson = None #v
-    while poisson is None:
-        try:
-            poisson = float(raw_input("Poisson's Ratio of Material: "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    modOfElas = None #E
-    while modOfElas is None:
-        try:
-            modOfElas = float(raw_input("Modulus of Elasticity of Material (lb/in2): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    thick = None #t
-    while thick is None:
-        try:
-            thick = float(raw_input("Thickness of Plate (in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
+    load = prompt("Uniformly Distributed Pressure (lb/in): ") #q
+    length = prompt("Location of Start of Pressure Distribution from Plate Center(in): ") #r
+    radOut, radIn, poisson, modOfElas, thick = promptFileAll()
 
     return (load, length, radOut, radIn, poisson, modOfElas, thick)
 
@@ -113,54 +34,9 @@ def promptFile2():
 def promptFile3():
     #User Input Section for Uniformly Distributed Pressure
 
-    load = None #q
-    while load is None:
-        try:
-            load = float(raw_input("Maximum Distributed Pressure Load (lb/in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-          
-    length = None #r
-    while length is None:
-        try:
-            length = float(raw_input("Location of Start of Pressure Distribution from Plate Center(in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    radOut = None #a
-    while radOut is None:
-        try:
-            radOut = float(raw_input("Outer Radius of Plate (in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    radIn = None #b
-    while radIn is None:
-        try:
-            radIn = float(raw_input("Inner Radius of Plate (in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    poisson = None #v
-    while poisson is None:
-        try:
-            poisson = float(raw_input("Poisson's Ratio of Material: "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    modOfElas = None #E
-    while modOfElas is None:
-        try:
-            modOfElas = float(raw_input("Modulus of Elasticity of Material (lb/in2): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    thick = None #t
-    while thick is None:
-        try:
-            thick = float(raw_input("Thickness of Plate (in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
+    load = prompt("Maximum Distributed Pressure Load (lb/in): ") #q
+    length = prompt("Location of Start of Pressure Distribution from Plate Center(in): ") #r
+    radOut, radIn, poisson, modOfElas, thick = promptFileAll()
 
     return (load, length, radOut, radIn, poisson, modOfElas, thick)
 
@@ -168,108 +44,18 @@ def promptFile3():
 def promptFile4():
     #User Input Section for Parabolically Distributed Pressure
 
-    load = None #q
-    while load is None:
-        try:
-            load = float(raw_input("Maximum Distributed Pressure Load (lb/in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-          
-    length = None #r
-    while length is None:
-        try:
-            length = float(raw_input("Location of Start of Pressure Distribution from Plate Center(in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    radOut = None #a
-    while radOut is None:
-        try:
-            radOut = float(raw_input("Outer Radius of Plate (in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    radIn = None #b
-    while radIn is None:
-        try:
-            radIn = float(raw_input("Inner Radius of Plate (in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    poisson = None #v
-    while poisson is None:
-        try:
-            poisson = float(raw_input("Poisson's Ratio of Material: "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    modOfElas = None #E
-    while modOfElas is None:
-        try:
-            modOfElas = float(raw_input("Modulus of Elasticity of Material (lb/in2): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    thick = None #t
-    while thick is None:
-        try:
-            thick = float(raw_input("Thickness of Plate (in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
+    load = prompt("Maximum Distributed Pressure Load (lb/in): ") #q
+    length = prompt("Location of Start of Pressure Distribution from Plate Center(in): ") #r
+    radOut, radIn, poisson, modOfElas, thick = promptFileAll()
 
     return (load, length, radOut, radIn, poisson, modOfElas, thick)
 
 def promptFile5():
     #User Input Section for Uniform Line Moment
 
-    moment = None #m
-    while moment is None:
-        try:
-            moment = float(raw_input("Applied Moment (in-lb): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-          
-    length = None #r
-    while length is None:
-        try:
-            length = float(raw_input("Distance to Applied Moment from Plate Center(in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    radOut = None #a
-    while radOut is None:
-        try:
-            radOut = float(raw_input("Outer Radius of Plate (in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    radIn = None #b
-    while radIn is None:
-        try:
-            radIn = float(raw_input("Inner Radius of Plate (in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    poisson = None #v
-    while poisson is None:
-        try:
-            poisson = float(raw_input("Poisson's Ratio of Material: "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    modOfElas = None #E
-    while modOfElas is None:
-        try:
-            modOfElas = float(raw_input("Modulus of Elasticity of Material (lb/in2): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    thick = None #t
-    while thick is None:
-        try:
-            thick = float(raw_input("Thickness of Plate (in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
+    moment = prompt("Applied Moment (in-lb): ") #m
+    length = prompt("Distance to Applied Moment from Plate Center(in): ") #r
+    radOut, radIn, poisson, modOfElas, thick = promptFileAll()
 
     return (moment, length, radOut, radIn, poisson, modOfElas, thick)
 
@@ -277,169 +63,28 @@ def promptFile5():
 def promptFile6():
     #User Input Section for Externally Applied Slope Change
 
-    theta = None #theta
-    while theta is None:
-        try:
-            theta = float(raw_input("Applied Slope Change (rad): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-          
-    length = None #r
-    while length is None:
-        try:
-            length = float(raw_input("Distance to Applied Slope Change from Plate Center(in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    radOut = None #a
-    while radOut is None:
-        try:
-            radOut = float(raw_input("Outer Radius of Plate (in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    radIn = None #b
-    while radIn is None:
-        try:
-            radIn = float(raw_input("Inner Radius of Plate (in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    poisson = None #v
-    while poisson is None:
-        try:
-            poisson = float(raw_input("Poisson's Ratio of Material: "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    modOfElas = None #E
-    while modOfElas is None:
-        try:
-            modOfElas = float(raw_input("Modulus of Elasticity of Material (lb/in2): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    thick = None #t
-    while thick is None:
-        try:
-            thick = float(raw_input("Thickness of Plate (in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
+    theta = prompt("Applied Slope Change (rad): ")
+    length = prompt("Distance to Applied Slope Change from Plate Center(in): ") #r
+    radOut, radIn, poisson, modOfElas, thick = promptFileAll()
 
     return (theta, length, radOut, radIn, poisson, modOfElas, thick)
 
 def promptFile7():
     #User Input Section for Externally Applied Vertical Deformation
 
-    delta = None #y
-    while delta is None:
-        try:
-            delta = float(raw_input("Applied Vertical Deformation (in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-          
-    length = None #r
-    while length is None:
-        try:
-            length = float(raw_input("Distance to Applied Deformation from Plate Center(in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    radOut = None #a
-    while radOut is None:
-        try:
-            radOut = float(raw_input("Outer Radius of Plate (in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    radIn = None #b
-    while radIn is None:
-        try:
-            radIn = float(raw_input("Inner Radius of Plate (in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    poisson = None #v
-    while poisson is None:
-        try:
-            poisson = float(raw_input("Poisson's Ratio of Material: "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    modOfElas = None #E
-    while modOfElas is None:
-        try:
-            modOfElas = float(raw_input("Modulus of Elasticity of Material (lb/in2): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    thick = None #t
-    while thick is None:
-        try:
-            thick = float(raw_input("Thickness of Plate (in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
+    delta = prompt("Applied Vertical Deformation (in): ") #y
+    length = prompt("Distance to Applied Deformation from Plate Center(in): ") #r
+    radOut, radIn, poisson, modOfElas, thick = promptFileAll()
 
     return (delta, length, radOut, radIn, poisson, modOfElas, thick)
 
 def promptFile8():
     #User Input Section for Externally Applied Temperature Differential
 
-    temp = None #delta-t
-    while temp is None:
-        try:
-            temp = float(raw_input("Applied Temperature Differential (degF): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-          
-    gamma = None #gamma
-    while gamma is None:
-        try:
-            gamma = float(raw_input("Temperature Coefficient of Expansion (in/in/degF): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    length = None #r
-    while length is None:
-        try:
-            length = float(raw_input("Distance to Applied Temperature Differential from Plate Center(in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    radOut = None #a
-    while radOut is None:
-        try:
-            radOut = float(raw_input("Outer Radius of Plate (in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    radIn = None #b
-    while radIn is None:
-        try:
-            radIn = float(raw_input("Inner Radius of Plate (in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    poisson = None #v
-    while poisson is None:
-        try:
-            poisson = float(raw_input("Poisson's Ratio of Material: "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    modOfElas = None #E
-    while modOfElas is None:
-        try:
-            modOfElas = float(raw_input("Modulus of Elasticity of Material (lb/in2): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
-
-    thick = None #t
-    while thick is None:
-        try:
-            thick = float(raw_input("Thickness of Plate (in): "))
-        except ValueError:
-            print "Non-Numerical Input.  Try Again."
+    temp = prompt("Applied Temperature Differential (degF): ") #delta-t
+    gamma = prompt("Temperature Coefficient of Expansion (in/in/degF): ") #gamma
+    length = prompt("Distance to Applied Temperature Differential from Plate Center(in): ") #r
+    radOut, radIn, poisson, modOfElas, thick = promptFileAll()
 
     return (temp, gamma, length, radOut, radIn, poisson, modOfElas, thick)
 
@@ -2449,267 +2094,171 @@ def annularPlate8L():
     
 def writeFile1(load, length, radOut, radIn, poisson, modOfElas, thick, ya, yb, thetaa, thetab, qa, qb, mra, mrb):
     #Creates and writes the output file for Annular Line Load calculations
-    fileName = raw_input("Output File Name: ") + ".txt"
-    output = open(fileName, 'w')
-    project = raw_input("Project Number: ")
-    output.write("""
-    Roark Equations for Stress and Strain
-    Circular Plate of Constant Thickness
-    Annular Line Load
 
-    Program Release 20130116
-    """)
-    output.write("\n    Project Number    %s\n" %(project))
-    output.write("    Calculated %s\n" %(str(datetime.now())[:19]))
-    output.write("\n\nINPUT DATA\n\n")
-    output.write("Annular Line Load:                            %.2f lb\n" %load)
-    output.write("Radius of Load Application:                   %.2f in\n" %length)
-    output.write("Outer Radius of Plate:                        %.2f in\n" %radOut)
-    output.write("Inner Radius of Plate:                        %.2f in\n" %radIn)
-    output.write("Poisson's Ratio of Material:                  %.2f \n" %poisson)
-    output.write("Modulus of Elasticity of Material:            %.2f in4\n" %modOfElas)
-    output.write("Thickness of Plate:                           %.2f in\n" %thick)
-    output.write("\n\nOUTPUT DATA\n\n")
-    output.write("Vertical Deflection of Plate at Outer Radius: %.2f in\n" %ya)
-    output.write("Vertical Deflection of Plate at Inner Radius: %.2f in\n" %yb)
-    output.write("Radial Slope of Plate at Outer Radius:        %.2f rad\n" %thetaa)
-    output.write("Radial Slope of Plate at Inner Radius:        %.2f rad\n" %thetab)
-    output.write("Reaction Load at Outer Radius:                %.2f lb\n" %qa)
-    output.write("Reaction Load at Inner Radius:                %.2f lb\n" %qb)
-    output.write("Reaction Moment at Outer Radius:              %.2f in-lb\n" %mra)
-    output.write("Reaction Moment at Inner Radius:              %.2f in-lb\n" %mrb)
-    output.close()
+    inputLabels = ["Annular Line Load:                                            ", "Radius of Load Application:                                   ",
+                   "Outer Radius of Plate:                                        ", "Inner Radius of Plate:                                        ",
+                   "Poisson's Ratio of Material:                                  ", "Modulus of Elasticity of Material:                            ",
+                   "Thickness of Plate:                                           "]
+    inputValues = [round(load,2), round(length,2), round(radOut,2), round(radIn,2), round(poisson,2), round(modOfElas,2), round(thick,2)]
+    inputDims = ['  lb', '  in', '  in', '  in', '  ', '  in4', '  in']
 
+    outputLabels = ["Vertical Deflection of Plate at Outer Radius:                 ", "Vertical Deflection of Plate at Inner Radius:                 ",
+                    "Radial Slope of Plate at Outer Radius:                        ", "Radial Slope of Plate at Inner Radius:                        ",
+                    "Reaction Load at Outer Radius:                                ", "Reaction Load at Inner Radius:                                ",
+                    "Reaction Moment at Outer Radius:                              ", "Reaction Moment at Inner Radius:                              "]
+    outputValues = [round(ya,2), round(yb,2), round(thetaa,2), round(thetab,2), round(qa,2), round(qb,2), round(mra,2), round(mrb,2)]
+    outputDims = ['  in', '  in', '  rad', '  rad', '  lb', '  lb', '  in-lb', '  in-lb']
+
+
+    return fileWriter("Circular Plate of Constant Thickness", "Annular Line Load",inputLabels, inputValues, inputDims, outputLabels, outputValues, outputDims)    
+
+    
 def writeFile2(load, length, radOut, radIn, poisson, modOfElas, thick, ya, yb, thetaa, thetab, qa, qb, mra, mrb):
     #Creates and writes the output file for Constant Pressure Distribution calculations
-    fileName = raw_input("Output File Name: ") + ".txt"
-    output = open(fileName, 'w')
-    project = raw_input("Project Number: ")
-    output.write("""
-    Roark Equations for Stress and Strain
-    Circular Plate of Constant Thickness
-    Uniformly Distributed Pressure
 
-    Program Release 20130116
-    """)
-    output.write("\n    Project Number    %s\n" %(project))
-    output.write("    Calculated %s\n" %(str(datetime.now())[:19]))
-    output.write("\n\nINPUT DATA\n\n")
-    output.write("Pressure Distribution:                                        %.2f lb/in\n" %load)
-    output.write("Location of Start of Pressure Distribution from Plate Center: %.2f in\n" %length)
-    output.write("Outer Radius of Plate:                                        %.2f in\n" %radOut)
-    output.write("Inner Radius of Plate:                                        %.2f in\n" %radIn)
-    output.write("Poisson's Ratio of Material:                                  %.2f \n" %poisson)
-    output.write("Modulus of Elasticity of Material:                            %.2f in4\n" %modOfElas)
-    output.write("Thickness of Plate:                                           %.2f in\n" %thick)
-    output.write("\n\nOUTPUT DATA\n\n")
-    output.write("Vertical Deflection of Plate at Outer Radius:                 %.2f in\n" %ya)
-    output.write("Vertical Deflection of Plate at Inner Radius:                 %.2f in\n" %yb)
-    output.write("Radial Slope of Plate at Outer Radius:                        %.2f rad\n" %thetaa)
-    output.write("Radial Slope of Plate at Inner Radius:                        %.2f rad\n" %thetab)
-    output.write("Reaction Load at Outer Radius:                                %.2f lb\n" %qa)
-    output.write("Reaction Load at Inner Radius:                                %.2f lb\n" %qb)
-    output.write("Reaction Moment at Outer Radius:                              %.2f in-lb\n" %mra)
-    output.write("Reaction Moment at Inner Radius:                              %.2f in-lb\n" %mrb)
-    output.close()
+    inputLabels = ["Pressure Distribution:                                        ", "Location of Start of Pressure Distribution from Plate Center: ",
+                   "Outer Radius of Plate:                                        ", "Inner Radius of Plate:                                        ",
+                   "Poisson's Ratio of Material:                                  ", "Modulus of Elasticity of Material:                            ",
+                   "Thickness of Plate:                                           "]
+    inputValues = [round(load,2), round(length,2), round(radOut,2), round(radIn,2), round(poisson,2), round(modOfElas,2), round(thick,2)]
+    inputDims = ['  lb/in', '  in', '  in', '  in', '  ', '  in4', '  in']
 
+    outputLabels = ["Vertical Deflection of Plate at Outer Radius:                 ", "Vertical Deflection of Plate at Inner Radius:                 ",
+                    "Radial Slope of Plate at Outer Radius:                        ", "Radial Slope of Plate at Inner Radius:                        ",
+                    "Reaction Load at Outer Radius:                                ", "Reaction Load at Inner Radius:                                ",
+                    "Reaction Moment at Outer Radius:                              ", "Reaction Moment at Inner Radius:                              "]
+    outputValues = [round(ya,2), round(yb,2), round(thetaa,2), round(thetab,2), round(qa,2), round(qb,2), round(mra,2), round(mrb,2)]
+    outputDims = ['  in', '  in', '  rad', '  rad', '  lb', '  lb', '  in-lb', '  in-lb']
+
+
+    return fileWriter("Circular Plate of Constant Thickness", "Uniformly Distributed Pressure",inputLabels, inputValues, inputDims, outputLabels, outputValues, outputDims)    
+
+    
 def writeFile3(load, length, radOut, radIn, poisson, modOfElas, thick, ya, yb, thetaa, thetab, qa, qb, mra, mrb):
-    #Creates and writes the output file for Linear Pressure Distributioncalculations
-    fileName = raw_input("Output File Name: ") + ".txt"
-    output = open(fileName, 'w')
-    project = raw_input("Project Number: ")
-    output.write("""
-    Roark Equations for Stress and Strain
-    Circular Plate of Constant Thickness
-    Linearly Increasing Distributed Pressure
+    #Creates and writes the output file for Linear Pressure Distribution calculations
 
-    Program Release 20130116
-    """)
-    output.write("\n    Project Number    %s\n" %(project))
-    output.write("    Calculated %s\n" %(str(datetime.now())[:19]))
-    output.write("\n\nINPUT DATA\n\n")
-    output.write("Maximum of Pressure Distribution:                             %.2f lb/in\n" %load)
-    output.write("Location of Start of Pressure Distribution from Plate Center: %.2f in\n" %length)
-    output.write("Outer Radius of Plate:                                        %.2f in\n" %radOut)
-    output.write("Inner Radius of Plate:                                        %.2f in\n" %radIn)
-    output.write("Poisson's Ratio of Material:                                  %.2f \n" %poisson)
-    output.write("Modulus of Elasticity of Material:                            %.2f in4\n" %modOfElas)
-    output.write("Thickness of Plate:                                           %.2f in\n" %thick)
-    output.write("\n\nOUTPUT DATA\n\n")
-    output.write("Vertical Deflection of Plate at Outer Radius:                 %.2f in\n" %ya)
-    output.write("Vertical Deflection of Plate at Inner Radius:                 %.2f in\n" %yb)
-    output.write("Radial Slope of Plate at Outer Radius:                        %.2f rad\n" %thetaa)
-    output.write("Radial Slope of Plate at Inner Radius:                        %.2f rad\n" %thetab)
-    output.write("Reaction Load at Outer Radius:                                %.2f lb\n" %qa)
-    output.write("Reaction Load at Inner Radius:                                %.2f lb\n" %qb)
-    output.write("Reaction Moment at Outer Radius:                              %.2f in-lb\n" %mra)
-    output.write("Reaction Moment at Inner Radius:                              %.2f in-lb\n" %mrb)
-    output.close()
+    inputLabels = ["Maximum of Pressure Distribution:                             ", "Location of Start of Pressure Distribution from Plate Center: ",
+                   "Outer Radius of Plate:                                        ", "Inner Radius of Plate:                                        ",
+                   "Poisson's Ratio of Material:                                  ", "Modulus of Elasticity of Material:                            ",
+                   "Thickness of Plate:                                           "]
+    inputValues = [round(load,2), round(length,2), round(radOut,2), round(radIn,2), round(poisson,2), round(modOfElas,2), round(thick,2)]
+    inputDims = ['  lb/in', '  in', '  in', '  in', '  ', '  in4', '  in']
+
+    outputLabels = ["Vertical Deflection of Plate at Outer Radius:                 ", "Vertical Deflection of Plate at Inner Radius:                 ",
+                    "Radial Slope of Plate at Outer Radius:                        ", "Radial Slope of Plate at Inner Radius:                        ",
+                    "Reaction Load at Outer Radius:                                ", "Reaction Load at Inner Radius:                                ",
+                    "Reaction Moment at Outer Radius:                              ", "Reaction Moment at Inner Radius:                              "]
+    outputValues = [round(ya,2), round(yb,2), round(thetaa,2), round(thetab,2), round(qa,2), round(qb,2), round(mra,2), round(mrb,2)]
+    outputDims = ['  in', '  in', '  rad', '  rad', '  lb', '  lb', '  in-lb', '  in-lb']
+
+
+    return fileWriter("Circular Plate of Constant Thickness", "Linearly Increasing Distributed Pressure",inputLabels, inputValues, inputDims, outputLabels, outputValues, outputDims)    
+
+
 
 def writeFile4(load, length, radOut, radIn, poisson, modOfElas, thick, ya, yb, thetaa, thetab, qa, qb, mra, mrb):
     #Creates and writes the output file for Parabolic Pressure Distributions calculations
-    fileName = raw_input("Output File Name: ") + ".txt"
-    output = open(fileName, 'w')
-    project = raw_input("Project Number: ")
-    output.write("""
-    Roark Equations for Stress and Strain
-    Circular Plate of Constant Thickness
-    Parabolically Increasing Distributed Pressure
 
-    Program Release 20130116
-    """)
-    output.write("\n    Project Number    %s\n" %(project))
-    output.write("    Calculated %s\n" %(str(datetime.now())[:19]))
-    output.write("\n\nINPUT DATA\n\n")
-    output.write("Maximum of Pressure Distribution:                             %.2f lb/in\n" %load)
-    output.write("Location of Start of Pressure Distribution from Plate Center: %.2f in\n" %length)
-    output.write("Outer Radius of Plate:                                        %.2f in\n" %radOut)
-    output.write("Inner Radius of Plate:                                        %.2f in\n" %radIn)
-    output.write("Poisson's Ratio of Material:                                  %.2f \n" %poisson)
-    output.write("Modulus of Elasticity of Material:                            %.2f in4\n" %modOfElas)
-    output.write("Thickness of Plate:                                           %.2f in\n" %thick)
-    output.write("\n\nOUTPUT DATA\n\n")
-    output.write("Vertical Deflection of Plate at Outer Radius:                 %.2f in\n" %ya)
-    output.write("Vertical Deflection of Plate at Inner Radius:                 %.2f in\n" %yb)
-    output.write("Radial Slope of Plate at Outer Radius:                        %.2f rad\n" %thetaa)
-    output.write("Radial Slope of Plate at Inner Radius:                        %.2f rad\n" %thetab)
-    output.write("Reaction Load at Outer Radius:                                %.2f lb\n" %qa)
-    output.write("Reaction Load at Inner Radius:                                %.2f lb\n" %qb)
-    output.write("Reaction Moment at Outer Radius:                              %.2f in-lb\n" %mra)
-    output.write("Reaction Moment at Inner Radius:                              %.2f in-lb\n" %mrb)
-    output.close()
+    inputLabels = ["Maximum of Pressure Distribution:                             ", "Location of Start of Pressure Distribution from Plate Center: ",
+                   "Outer Radius of Plate:                                        ", "Inner Radius of Plate:                                        ",
+                   "Poisson's Ratio of Material:                                  ", "Modulus of Elasticity of Material:                            ",
+                   "Thickness of Plate:                                           "]
+    inputValues = [round(load,2), round(length,2), round(radOut,2), round(radIn,2), round(poisson,2), round(modOfElas,2), round(thick,2)]
+    inputDims = ['  lb/in', '  in', '  in', '  in', '  ', '  in4', '  in']
+
+    outputLabels = ["Vertical Deflection of Plate at Outer Radius:                 ", "Vertical Deflection of Plate at Inner Radius:                 ",
+                    "Radial Slope of Plate at Outer Radius:                        ", "Radial Slope of Plate at Inner Radius:                        ",
+                    "Reaction Load at Outer Radius:                                ", "Reaction Load at Inner Radius:                                ",
+                    "Reaction Moment at Outer Radius:                              ", "Reaction Moment at Inner Radius:                              "]
+    outputValues = [round(ya,2), round(yb,2), round(thetaa,2), round(thetab,2), round(qa,2), round(qb,2), round(mra,2), round(mrb,2)]
+    outputDims = ['  in', '  in', '  rad', '  rad', '  lb', '  lb', '  in-lb', '  in-lb']
+
+
+    return fileWriter("Circular Plate of Constant Thickness", "Parabolically Increasing Distributed Pressure",inputLabels, inputValues, inputDims, outputLabels, outputValues, outputDims)    
+
 
 
 def writeFile5(moment, length, radOut, radIn, poisson, modOfElas, thick, ya, yb, thetaa, thetab, qa, qb, mra, mrb):
     #Creates and writes the output file for Moment calculations
-    fileName = raw_input("Output File Name: ") + ".txt"
-    output = open(fileName, 'w')
-    project = raw_input("Project Number: ")
-    output.write("""
-    Roark Equations for Stress and Strain
-    Circular Plate of Constant Thickness
-    Uniform Line Moment
+    
+    inputLabels = ["Applied Moment:                                               ", "Distance to Moment Application from Plate Center:             ",
+                   "Outer Radius of Plate:                                        ", "Inner Radius of Plate:                                        ",
+                   "Poisson's Ratio of Material:                                  ", "Modulus of Elasticity of Material:                            ",
+                   "Thickness of Plate:                                           "]
+    inputValues = [round(moment,2), round(length,2), round(radOut,2), round(radIn,2), round(poisson,2), round(modOfElas,2), round(thick,2)]
+    inputDims = ['  in-lb', '  in', '  in', '  in', '  ', '  in4', '  in']
 
-    Program Release 20130116
-    """)
-    output.write("\n    Project Number    %s\n" %(project))
-    output.write("    Calculated %s\n" %(str(datetime.now())[:19]))
-    output.write("\n\nINPUT DATA\n\n")
-    output.write("Applied Moment:                                               %.2f in-lb\n" %moment)
-    output.write("Distance to Moment Application from Plate Center:             %.2f in\n" %length)
-    output.write("Outer Radius of Plate:                                        %.2f in\n" %radOut)
-    output.write("Inner Radius of Plate:                                        %.2f in\n" %radIn)
-    output.write("Poisson's Ratio of Material:                                  %.2f \n" %poisson)
-    output.write("Modulus of Elasticity of Material:                            %.2f in4\n" %modOfElas)
-    output.write("Thickness of Plate:                                           %.2f in\n" %thick)
-    output.write("\n\nOUTPUT DATA\n\n")
-    output.write("Vertical Deflection of Plate at Outer Radius:                 %.2f in\n" %ya)
-    output.write("Vertical Deflection of Plate at Inner Radius:                 %.2f in\n" %yb)
-    output.write("Radial Slope of Plate at Outer Radius:                        %.2f rad\n" %thetaa)
-    output.write("Radial Slope of Plate at Inner Radius:                        %.2f rad\n" %thetab)
-    output.write("Reaction Load at Outer Radius:                                %.2f lb\n" %qa)
-    output.write("Reaction Load at Inner Radius:                                %.2f lb\n" %qb)
-    output.write("Reaction Moment at Outer Radius:                              %.2f in-lb\n" %mra)
-    output.write("Reaction Moment at Inner Radius:                              %.2f in-lb\n" %mrb)
-    output.close()
+    outputLabels = ["Vertical Deflection of Plate at Outer Radius:                 ", "Vertical Deflection of Plate at Inner Radius:                 ",
+                    "Radial Slope of Plate at Outer Radius:                        ", "Radial Slope of Plate at Inner Radius:                        ",
+                    "Reaction Load at Outer Radius:                                ", "Reaction Load at Inner Radius:                                ",
+                    "Reaction Moment at Outer Radius:                              ", "Reaction Moment at Inner Radius:                              "]
+    outputValues = [round(ya,2), round(yb,2), round(thetaa,2), round(thetab,2), round(qa,2), round(qb,2), round(mra,2), round(mrb,2)]
+    outputDims = ['  in', '  in', '  rad', '  rad', '  lb', '  lb', '  in-lb', '  in-lb']
 
+
+    return fileWriter("Circular Plate of Constant Thickness", "Uniform Line Moment",inputLabels, inputValues, inputDims, outputLabels, outputValues, outputDims)    
+
+    
 def writeFile6(theta, length, radOut, radIn, poisson, modOfElas, thick, ya, yb, thetaa, thetab, qa, qb, mra, mrb):
     #Creates and writes the output file for External Slope Deformation calculations
-    fileName = raw_input("Output File Name: ") + ".txt"
-    output = open(fileName, 'w')
-    project = raw_input("Project Number: ")
-    output.write("""
-    Roark Equations for Stress and Strain
-    Circular Plate of Constant Thickness
-    Applied Slope Change
 
-    Program Release 20130116
-    """)
-    output.write("\n    Project Number    %s\n" %(project))
-    output.write("    Calculated %s\n" %(str(datetime.now())[:19]))
-    output.write("\n\nINPUT DATA\n\n")
-    output.write("Applied Change in Slope:                                      %.2f rad\n" %theta)
-    output.write("Distance to Slope Change Application from Plate Center:       %.2f in\n" %length)
-    output.write("Outer Radius of Plate:                                        %.2f in\n" %radOut)
-    output.write("Inner Radius of Plate:                                        %.2f in\n" %radIn)
-    output.write("Poisson's Ratio of Material:                                  %.2f \n" %poisson)
-    output.write("Modulus of Elasticity of Material:                            %.2f in4\n" %modOfElas)
-    output.write("Thickness of Plate:                                           %.2f in\n" %thick)
-    output.write("\n\nOUTPUT DATA\n\n")
-    output.write("Vertical Deflection of Plate at Outer Radius:                 %.2f in\n" %ya)
-    output.write("Vertical Deflection of Plate at Inner Radius:                 %.2f in\n" %yb)
-    output.write("Radial Slope of Plate at Outer Radius:                        %.2f rad\n" %thetaa)
-    output.write("Radial Slope of Plate at Inner Radius:                        %.2f rad\n" %thetab)
-    output.write("Reaction Load at Outer Radius:                                %.2f lb\n" %qa)
-    output.write("Reaction Load at Inner Radius:                                %.2f lb\n" %qb)
-    output.write("Reaction Moment at Outer Radius:                              %.2f in-lb\n" %mra)
-    output.write("Reaction Moment at Inner Radius:                              %.2f in-lb\n" %mrb)
-    output.close()
+    inputLabels = ["Applied Change in Slope:                                      ", "Distance to Slope Change Application from Plate Center:       ",
+                   "Outer Radius of Plate:                                        ", "Inner Radius of Plate:                                        ",
+                   "Poisson's Ratio of Material:                                  ", "Modulus of Elasticity of Material:                            ",
+                   "Thickness of Plate:                                           "]
+    inputValues = [round(theta,2), round(length,2), round(radOut,2), round(radIn,2), round(poisson,2), round(modOfElas,2), round(thick,2)]
+    inputDims = ['  rad', '  in', '  in', '  in', '  ', '  in4', '  in']
+
+    outputLabels = ["Vertical Deflection of Plate at Outer Radius:                 ", "Vertical Deflection of Plate at Inner Radius:                 ",
+                    "Radial Slope of Plate at Outer Radius:                        ", "Radial Slope of Plate at Inner Radius:                        ",
+                    "Reaction Load at Outer Radius:                                ", "Reaction Load at Inner Radius:                                ",
+                    "Reaction Moment at Outer Radius:                              ", "Reaction Moment at Inner Radius:                              "]
+    outputValues = [round(ya,2), round(yb,2), round(thetaa,2), round(thetab,2), round(qa,2), round(qb,2), round(mra,2), round(mrb,2)]
+    outputDims = ['  in', '  in', '  rad', '  rad', '  lb', '  lb', '  in-lb', '  in-lb']
+
+
+    return fileWriter("Circular Plate of Constant Thickness", "Applied Slope Change",inputLabels, inputValues, inputDims, outputLabels, outputValues, outputDims)    
+
 
 def writeFile7(delta, length, radOut, radIn, poisson, modOfElas, thick, ya, yb, thetaa, thetab, qa, qb, mra, mrb):
     #Creates and writes the output file for External Vertical Deformation calculations
-    fileName = raw_input("Output File Name: ") + ".txt"
-    output = open(fileName, 'w')
-    project = raw_input("Project Number: ")
-    output.write("""
-    Roark Equations for Stress and Strain
-    Circular Plate of Constant Thickness
-    Applied Slope Change
 
-    Program Release 20130116
-    """)
-    output.write("\n    Project Number    %s\n" %(project))
-    output.write("    Calculated %s\n" %(str(datetime.now())[:19]))
-    output.write("\n\nINPUT DATA\n\n")
-    output.write("Applied Change in Vertical Deformation:                       %.2f in\n" %delta)
-    output.write("Distance to Vertical Change Application from Plate Center:    %.2f in\n" %length)
-    output.write("Outer Radius of Plate:                                        %.2f in\n" %radOut)
-    output.write("Inner Radius of Plate:                                        %.2f in\n" %radIn)
-    output.write("Poisson's Ratio of Material:                                  %.2f \n" %poisson)
-    output.write("Modulus of Elasticity of Material:                            %.2f in4\n" %modOfElas)
-    output.write("Thickness of Plate:                                           %.2f in\n" %thick)
-    output.write("\n\nOUTPUT DATA\n\n")
-    output.write("Vertical Deflection of Plate at Outer Radius:                 %.2f in\n" %ya)
-    output.write("Vertical Deflection of Plate at Inner Radius:                 %.2f in\n" %yb)
-    output.write("Radial Slope of Plate at Outer Radius:                        %.2f rad\n" %thetaa)
-    output.write("Radial Slope of Plate at Inner Radius:                        %.2f rad\n" %thetab)
-    output.write("Reaction Load at Outer Radius:                                %.2f lb\n" %qa)
-    output.write("Reaction Load at Inner Radius:                                %.2f lb\n" %qb)
-    output.write("Reaction Moment at Outer Radius:                              %.2f in-lb\n" %mra)
-    output.write("Reaction Moment at Inner Radius:                              %.2f in-lb\n" %mrb)
-    output.close()
+    inputLabels = ["Applied Change in Vertical Deformation:                       ", "Distance to Vertical Change Application from Plate Center:    ",
+                   "Outer Radius of Plate:                                        ", "Inner Radius of Plate:                                        ",
+                   "Poisson's Ratio of Material:                                  ", "Modulus of Elasticity of Material:                            ",
+                   "Thickness of Plate:                                           "]
+    inputValues = [round(delta,2), round(length,2), round(radOut,2), round(radIn,2), round(poisson,2), round(modOfElas,2), round(thick,2)]
+    inputDims = ['  in', '  in', '  in', '  in', '  ','  in4', '  in']
+
+    outputLabels = ["Vertical Deflection of Plate at Outer Radius:                 ", "Vertical Deflection of Plate at Inner Radius:                 ",
+                    "Radial Slope of Plate at Outer Radius:                        ", "Radial Slope of Plate at Inner Radius:                        ",
+                    "Reaction Load at Outer Radius:                                ", "Reaction Load at Inner Radius:                               ",
+                    "Reaction Moment at Outer Radius:                              ", "Reaction Moment at Inner Radius:                              "]
+    outputValues = [round(ya,2), round(yb,2), round(thetaa,2), round(thetab,2), round(qa,2), round(qb,2), round(mra,2), round(mrb,2)]
+    outputDims = ['  in', '  in', '  rad', '  rad', '  lb', '  lb', '  in-lb', '  in-lb']
+
+    return fileWriter("Circular Plate of Constant Thickness", "Applied Vertical Deformation",inputLabels, inputValues, inputDims, outputLabels, outputValues, outputDims)    
+
+
 
 def writeFile8(temp, gamma, length, radOut, radIn, poisson, modOfElas, thick, ya, yb, thetaa, thetab, qa, qb, mra, mrb):
     #Creates and writes the output file for External Vertical Deformation calculations
-    fileName = raw_input("Output File Name: ") + ".txt"
-    output = open(fileName, 'w')
-    project = raw_input("Project Number: ")
-    output.write("""
-    Roark Equations for Stress and Strain
-    Circular Plate of Constant Thickness
-    Applied Slope Change
 
-    Program Release 20130116
-    """)
-    output.write("\n    Project Number    %s\n" %(project))
-    output.write("    Calculated %s\n" %(str(datetime.now())[:19]))
-    output.write("\n\nINPUT DATA\n\n")
-    output.write("Applied Temperature Differential:                             %.2f degF\n" %temp)
-    output.write("Temperature Coefficient of Expansion:                         %.2f in/in/degF\n" %gamma)
-    output.write("Distance to Vertical Change Application from Plate Center:    %.2f in\n" %length)
-    output.write("Outer Radius of Plate:                                        %.2f in\n" %radOut)
-    output.write("Inner Radius of Plate:                                        %.2f in\n" %radIn)
-    output.write("Poisson's Ratio of Material:                                  %.2f \n" %poisson)
-    output.write("Modulus of Elasticity of Material:                            %.2f in4\n" %modOfElas)
-    output.write("Thickness of Plate:                                           %.2f in\n" %thick)
-    output.write("\n\nOUTPUT DATA\n\n")
-    output.write("Vertical Deflection of Plate at Outer Radius:                 %.2f in\n" %ya)
-    output.write("Vertical Deflection of Plate at Inner Radius:                 %.2f in\n" %yb)
-    output.write("Radial Slope of Plate at Outer Radius:                        %.2f rad\n" %thetaa)
-    output.write("Radial Slope of Plate at Inner Radius:                        %.2f rad\n" %thetab)
-    output.write("Reaction Load at Outer Radius:                                %.2f lb\n" %qa)
-    output.write("Reaction Load at Inner Radius:                                %.2f lb\n" %qb)
-    output.write("Reaction Moment at Outer Radius:                              %.2f in-lb\n" %mra)
-    output.write("Reaction Moment at Inner Radius:                              %.2f in-lb\n" %mrb)
-    output.close()
+
+    inputLabels = ["Applied Temperature Differential:                             ", "Temperature Coefficient of Expansion:                         ",
+              "Distance to Vertical Change Application from Plate Center:    ", "Outer Radius of Plate:                                        ",
+              "Inner Radius of Plate:                                        ", "Poisson's Ratio of Material:                                  ",
+              "Modulus of Elasticity of Material:                            ", "Thickness of Plate:                                           "]
+    inputValues = [round(temp,2), round(gamma,2), round(length,2), round(radOut,2), round(radIn,2), round(poisson,2), round(modOfElas,2), round(thick,2)]
+    inputDims = ['  degF', '  in/in/degF', '  in', '  in', '  in','  ', '  in4', '  in']
+
+    outputLabels = ["Vertical Deflection of Plate at Outer Radius:                 ", "Vertical Deflection of Plate at Inner Radius:                 ",
+               "Radial Slope of Plate at Outer Radius:                        ", "Radial Slope of Plate at Inner Radius:                        ",
+               "Reaction Load at Outer Radius:                                ", "Reaction Load at Inner Radius:                                ",
+               "Reaction Moment at Outer Radius:                              ", "Reaction Moment at Inner Radius:                              "]
+    outputValues = [round(ya,2), round(yb,2), round(thetaa,2), round(thetab,2), round(qa,2), round(qb,2), round(mra,2), round(mrb,2)]
+    outputDims = ['  in', '  in', '  rad', '  rad', '  lb', '  lb', '  in-lb', '  in-lb']
+
+    return fileWriter("Circular Plate of Constant Thickness", "Applied Temperature Differential",inputLabels, inputValues, inputDims, outputLabels, outputValues, outputDims)    
+
 
